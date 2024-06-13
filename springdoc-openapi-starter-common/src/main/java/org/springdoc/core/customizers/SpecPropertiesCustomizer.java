@@ -185,7 +185,7 @@ public class SpecPropertiesCustomizer implements GlobalOpenApiCustomizer {
 		else {
 			Map<String, Schema> schemaMap = components.getSchemas();
 			schemaMap.forEach((key, schema) -> {
-				Schema schemaProperties = componentsProperties.getSchemas().get(key);
+				Schema schemaProperties = componentsProperties.getSchemas()==null?null:componentsProperties.getSchemas().get(key);
 				if (schemaProperties != null) {
 					resolveString(schema::setDescription, schemaProperties::getDescription);
 					Map<String, Schema> properties = schema.getProperties();
